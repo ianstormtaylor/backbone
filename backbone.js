@@ -175,7 +175,7 @@
 
   // Create a new model, with defined attributes. A client id (`cid`)
   // is automatically generated and assigned for you.
-  var Model = Backbone.Model = function(attributes, options) {
+  var Model = Backbone.Model = function Model(attributes, options) {
     this.cid = _.uniqueId('c');
     this._configure(attributes || {}, options || {});
     this.initialize.apply(this, arguments);
@@ -553,7 +553,7 @@
   // Provides a standard collection class for our sets of models, ordered
   // or unordered. If a `comparator` is specified, the Collection will maintain
   // its models in sort order, as they're added and removed.
-  var Collection = Backbone.Collection = function(models, options) {
+  var Collection = Backbone.Collection = function Collection(models, options) {
     options || (options = {});
     this._configure(models, options);
     this.initialize.apply(this, arguments);
@@ -891,7 +891,7 @@
 
   // Routers map faux-URLs to actions, and fire events when routes are
   // matched. Creating a new one sets its `routes` hash, if not set statically.
-  var Router = Backbone.Router = function(options) {
+  var Router = Backbone.Router = function Router(options) {
     this._configure(options || {});
     this.initialize.apply(this, arguments);
   };
@@ -977,7 +977,7 @@
 
   // Handles cross-browser history management, based on URL fragments. If the
   // browser does not support `onhashchange`, falls back to polling.
-  var History = Backbone.History = function(options) {
+  var History = Backbone.History = function History(options) {
     this.handlers = [];
     _.bindAll(this, 'checkUrl');
     this.location = options && options.location || root.location;
@@ -1177,7 +1177,7 @@
 
   // Creating a Backbone.View creates its initial element outside of the DOM,
   // if an existing element is not provided...
-  var View = Backbone.View = function(options) {
+  var View = Backbone.View = function View(options) {
     this.cid = _.uniqueId('view');
     this._configure(options || {});
     this._ensureElement();
