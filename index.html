@@ -387,7 +387,6 @@
       <li>– <a href="#View-dollar">$ (jQuery or Zepto)</a></li>
       <li>– <a href="#View-render">render</a></li>
       <li>– <a href="#View-remove">remove</a></li>
-      <li>– <a href="#View-destroy">destroy</a></li>
       <li>– <a href="#View-make">make</a></li>
       <li>– <a href="#View-delegateEvents">delegateEvents</a></li>
       <li>– <a href="#View-undelegateEvents">undelegateEvents</a></li>
@@ -410,7 +409,7 @@
       <li>– <a href="#examples-rdio">Rdio</a></li>
       <li>– <a href="#examples-linkedin">LinkedIn Mobile</a></li>
       <li>– <a href="#examples-flow">Flow</a></li>
-      <li>– <a href="#examples-audiovroom">AudioVroom</a></li>
+      <li>– <a href="#examples-wordpress">WordPress.com</a></li>
       <li>– <a href="#examples-foursquare">Foursquare</a></li>
       <li>– <a href="#examples-wunderkit">Wunderkit</a></li>
       <li>– <a href="#examples-disqus">Disqus</a></li>
@@ -423,7 +422,7 @@
       <li>– <a href="#examples-basecamp">Basecamp Mobile</a></li>
       <li>– <a href="#examples-slavery-footprint">Slavery Footprint</a></li>
       <li>– <a href="#examples-stripe">Stripe</a></li>
-      <li>– <a href="#examples-airbnb">Airbnb Mobile</a></li>
+      <li>– <a href="#examples-airbnb">Airbnb</a></li>
       <li>– <a href="#examples-diaspora">Diaspora</a></li>
       <li>– <a href="#examples-soundcloud">SoundCloud Mobile</a></li>
       <li>- <a href="#examples-artsy">Art.sy</a></li>
@@ -433,6 +432,7 @@
       <li>– <a href="#examples-cloudapp">CloudApp</a></li>
       <li>– <a href="#examples-seatgeek">SeatGeek</a></li>
       <li>– <a href="#examples-easel">Easel</a></li>
+      <li>– <a href="#examples-prose">Prose</a></li>
       <li>– <a href="#examples-grove">Grove.io</a></li>
       <li>– <a href="#examples-kanogames">KANO/GAMES</a></li>
       <li>– <a href="#examples-shortmail">Shortmail</a></li>
@@ -676,7 +676,7 @@ proxy.on("all", function(eventName) {
       <b>context</b> is specified, all of the versions of the callback with
       different contexts will be removed. If no
       callback is specified, all callbacks for the <b>event</b> will be
-      removed. If no event is specified, <i>all</i> event callbacks on the object
+      removed. If no event is specified, callbacks for <i>all</i> events
       will be removed.
     </p>
 
@@ -2358,26 +2358,6 @@ var Bookmark = Backbone.View.extend({
       <tt>view.$el.remove();</tt>
     </p>
 
-    <p id="View-destroy">
-      <b class="header">destroy</b><code>view.destroy()</code>
-      <br />
-      The default implementation of <b>destroy</b> is a no-op.  It should be
-      overridden in order to clean up any references created by a view,
-      either to itself or other objects, in order to prevent memory leaks.
-      By convention, <b>destroy</b> should <tt>return this</tt> for
-      chainability.
-    </p>
-
-<pre>
-var View = Backbone.View.extend({
-  destroy: function() {
-    if (this.model) this.model.off(null, null, this);
-    if (this.collection) this.collection.off(null, null, this);
-    return this;
-  }
-});
-</pre>
-
     <p id="View-make">
       <b class="header">make</b><code>view.make(tagName, [attributes], [content])</code>
       <br />
@@ -2595,22 +2575,25 @@ var model = localBackbone.Model.extend(...);
         <img width="550" height="416" data-original="docs/images/flow.png" alt="Flow" class="example_image" />
       </a>
     </div>
+    
+    
+  	<h2 id="examples-wordpress">WordPress.com</h2>
 
-    <h2 id="examples-audiovroom">AudioVroom</h2>
-
-    <p>
-      <a href="http://www.audiovroom.com/">AudioVroom</a> is a free music
-      streaming app that allows you to listen to your Facebook friends like
-      radio stations. It relies heavily on Backbone (views and song management)
-      and also features a responsive grid-based design (using CSS3 media-queries)
-      to deliver a unified user experience on desktops, mobiles, and tablets alike.
-      Being a pure Backbone app, AudioVroom is only 60kb compressed, and can be
-      entirely hosted on the CDN.
-    </p>
+  	<p>
+  		<a href="http://wordpress.com/">WordPress.com</a> is the software-as-a-service 
+  		version of <a href="http://wordpress.org">WordPress</a>. It uses Backbone.js 
+  		Models, Collections, and Views in its 
+  		<a href="http://en.blog.wordpress.com/2012/05/25/notifications-refreshed/">Notifications system</a>.  Backbone.js was selected
+  		because it was easy to fit into the structure of the application, not the 
+  		other way around. <a href="http://automattic.com">Automattic</a> 
+  		(the company behind WordPress.com) is integrating Backbone.js into the 
+  		Stats tab and other features throughout the homepage.
+  	</p>
 
     <div style="text-align: center;">
-      <a href="http://www.audiovroom.com/">
-        <img width="550" height="513" data-original="docs/images/audiovroom.png" alt="AudioVroom" class="example_image" />
+      <a href="http://wordpress.com/">
+        <img width="550" height="387" data-original="docs/images/wpcom-notifications.png" alt="WordPress.com Notifications"
+  	title="WordPress.com Notifications" class="example_image" />
       </a>
     </div>
 
@@ -2650,14 +2633,14 @@ var model = localBackbone.Model.extend(...);
         <img width="543" height="525" data-original="docs/images/wunderkit.png" alt="Wunderkit" class="example_image" />
       </a>
     </div>
-    
+
     <h2 id="examples-disqus">Disqus</h2>
 
     <p>
-      <a href="http://www.disqus.com">Disqus</a> chose Backbone.js to power the 
-      latest version of their commenting widget. Backbone&rsquo;s small 
-      footprint and easy extensibility made it the right choice for Disqus&rsquo; 
-      distributed web application, which is hosted entirely inside an iframe and 
+      <a href="http://www.disqus.com">Disqus</a> chose Backbone.js to power the
+      latest version of their commenting widget. Backbone&rsquo;s small
+      footprint and easy extensibility made it the right choice for Disqus&rsquo;
+      distributed web application, which is hosted entirely inside an iframe and
       served on thousands of large web properties, including IGN, Wired, CNN, MLB, and more.
     </p>
 
@@ -2839,20 +2822,21 @@ var model = localBackbone.Model.extend(...);
       </a>
     </div>
 
-    <h2 id="examples-airbnb">Airbnb Mobile</h2>
+    <h2 id="examples-airbnb">Airbnb</h2>
 
     <p>
-      <a href="http://airbnb.com">Airbnb</a> used Backbone.js and
-      <a href="http://coffeescript.org">CoffeeScript</a> to quickly build
-      <a href="http://m.airbnb.com">Airbnb Mobile</a>
-      in six weeks with a team of three. The mobile version of Airbnb lets you
-      discover and book rental spaces directly from your phone: from a private
-      apartment to a private island...
+      <a href="http://airbnb.com">Airbnb</a> uses Backbone in many of its products.
+      It started with <a href="http://m.airbnb.com">Airbnb Mobile Web</a>
+      (built in six weeks by a team of three) and has since grown to
+      <a href="https://www.airbnb.com/wishlists/popular">Wish Lists</a>,
+      <a href="http://www.airbnb.com/match">Match</a>,
+      <a href="http://www.airbnb.com/s/">Search</a>, Communities, Payments, and
+      Internal Tools.
     </p>
 
     <div style="text-align: center;">
       <a href="http://m.airbnb.com/">
-        <img width="500" height="330" data-original="docs/images/airbnb-mobile.png" alt="Airbnb-Mobile" class="example_image" />
+        <img width="500" height="489" data-original="docs/images/airbnb.png" alt="Airbnb" class="example_image" />
       </a>
     </div>
 
@@ -3030,6 +3014,27 @@ var model = localBackbone.Model.extend(...);
         <img width="550" height="395" data-original="docs/images/easel.png" alt="Easel" class="example_image" />
       </a>
     </div>
+
+    <h2 id="examples-prose">Prose</h2>
+
+    <p>
+      <a href="http://prose.io">Prose</a> is a content editor for GitHub,
+      optimized for managing websites built with
+      <a href="http://jekyllrb.com/">Jekyll</a> and Github Pages. Prose is
+      itself implemented as a static Jekyll site, using Backbone.js to render
+      the views and handle the routes, as well as
+      <a href="http://github.com/michael/github">Github.js</a>, a small data
+      abstraction layer for manipulating files directly on Github. Read more in the
+      <a href="http://developmentseed.org/blog/2012/june/25/prose-a-content-editor-for-github/">official introduction post</a>,
+      or <a href="https://github.com/prose/prose">take a look at the source code</a>.
+    </p>
+
+    <div style="text-align: center;">
+      <a href="http://prose.io">
+        <img width="550" height="447" data-original="docs/images/prose.png" alt="Prose" class="example_image" />
+      </a>
+    </div>
+
 
     <h2 id="examples-grove">Grove.io</h2>
 
